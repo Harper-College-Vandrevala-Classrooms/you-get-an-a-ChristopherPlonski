@@ -4,7 +4,34 @@
 # Gradebook
 
 ## Prerequisites
-### Requires C++14 or higher
+Requires C++14 or higher
 
 ## How-To
-### 
+Create the 'Gradebook' object.
+```
+Gradebook gradebook = Gradebook();
+```
+Create 'Student' objects with a first name, last name, and student ID.
+```
+Student student = Student("Bob", "Smith", 11111);
+```
+Create 'Assignment' objects with assignment name and max score.
+```
+Assignment assignment = Assignment("Quiz 1", 100);
+```
+Add students/assignments using the 'add_new_student()' and 'add_new_assignment()' methods on the Gradebook object by passing their objects in the arguments.
+```
+gradebook.add_new_student(student);
+gradebook.add_new_assignment(assignment);
+```
+Assign grades by using the 'try_give_student_grade_for_assignment()' method on the Gradebook object. Pass the student to grade, the assignment that will be graded, and the actual grade for the student. 
+```
+pair<bool,string> result = gradebook.try_give_student_grade_for_assignment(student, assignment, 43);
+```
+This function returns a 'pair<bool, string>', with the bool representing whether or not your passed parameters were valid (if the student/assignment wasn't previously added to the gradebook, it will be invalid), and the string representing the error/success message.
+
+
+To get the report, use the 'get_report()' method on the Gradebook object.
+```
+gradebook.get_report()
+```
