@@ -25,6 +25,7 @@ private:
 	vector<Grade*>* gradesVector;
 	bool does_student_exist(Student &studentToCheck);
 	bool does_assignment_exist(Assignment &assignmentToCheck);
+	string try_get_assignment_grade_of_student(Assignment& assignment, Student& student);
 };
 
 #endif // !1
