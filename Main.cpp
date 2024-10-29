@@ -29,6 +29,4 @@ int main() {
 
 	cout << "Gradebook Report: " << endl;
 	cout << gradebook.get_report();
-
-	// TODO: Make gradebook output match criteria
 }
