@@ -18,8 +18,10 @@ int main() {
 
 	gradebook.add_new_assignment(assignment1);
 
+	gradebook.try_give_student_grade_for_assignment(student1, assignment1, 5);
+
 	cout << "Report: " << endl;
 	cout << gradebook.get_report();
 
-
+	// TODO: Make gradebook output match criteria
 }

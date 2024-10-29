@@ -4,6 +4,7 @@ Gradebook::Gradebook()
 {
 	studentsVector = new vector<Student*>();
 	assignmentsVector = new vector<Assignment*>();
+	gradesVector = new vector<Grade*>();
 }
 
 Gradebook::~Gradebook()
@@ -32,22 +33,35 @@ void Gradebook::add_new_assignment(Assignment &newAssigment)
 	assignmentsVector->push_back(&newAssigment);
 }
 
+/// <summary>
+/// Returns a pair<bool, string>. Bool represents whether or not the process was successful. String represents the error/success message.
+/// Return statement currently not in use and uses throw() statements if invalid instead.
+/// </summary>
+/// <param name="student"></param>
+/// <param name="assignment"></param>
+/// <param name="grade"></param>
+/// <returns></returns>
 pair<bool, string> Gradebook::try_give_student_grade_for_assignment(Student& student, Assignment& assignment, int grade)
 {
 	if (!does_student_exist(student)) {
+		throw("Student is not in student list.");
 		return make_pair(false, "Student is not in student list.");
 	}
 
 	if (!does_assignment_exist(assignment)) {
+		throw("Student is not in student list.");
 		return make_pair(false, "Assignment is not in assignment list.");
 	}
 
 	if (grade < 0 || grade > assignment.get_max_points()) {
+		throw("Student is not in student list.");
 		return make_pair(false, "Grade is out of valid range.");
 	}
 	
-	Grade gradeForStudent = Grade(assignment, student, grade);
-	gradesVector->push_back(&gradeForStudent);
+	Grade* gradeForStudent = new Grade(assignment, student, grade);
+	gradesVector->push_back(gradeForStudent);
+
+	return make_pair(true, "Grade added successfully.");
 }
 
 string Gradebook::get_report()
